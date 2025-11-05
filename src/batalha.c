@@ -1,27 +1,21 @@
+#include "batalha.h"
+#include "jogador.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "batalha.h"
 
-void atacar(Territorio *atacante, Territorio *defensor) {
-    printf("\n%s ataca %s!\n", atacante->nome, defensor->nome);
-    if (atacante->tropas <= 1) {
-        printf("Ataque impossível — tropas insuficientes!\n");
-        return;
-    }
+void simularBatalha(Jogador* jogadores, int numJogadores) {
+    // Simula um confronto simples entre os dois primeiros jogadores (você pode expandir isso)
+    if (jogadores[0].tropas > 0 && jogadores[1].tropas > 0) {
+        printf("\nBatalha entre %s e %s!\n", jogadores[0].nome, jogadores[1].nome);
 
-    // Simulação simples de ataque:
-    int perdaAtacante = rand() % 3; 
-    int perdaDefensor = rand() % 3;
+        // Um perde 1 tropa (simulação simples)
+        jogadores[0].tropas--;
+        jogadores[1].tropas--;
 
-    atacante->tropas -= perdaAtacante;
-    defensor->tropas -= perdaDefensor;
-
-    if (defensor->tropas <= 0) {
-        printf("Território conquistado!\n");
-        defensor->dono = atacante->dono;
-        defensor->tropas = 1;
-        atacante->tropas--;
+        printf("Após a batalha:\n");
+        printf("%s tem %d tropas restantes.\n", jogadores[0].nome, jogadores[0].tropas);
+        printf("%s tem %d tropas restantes.\n", jogadores[1].nome, jogadores[1].tropas);
     } else {
-        printf("Ataque falhou!\n");
+        printf("\nUm dos jogadores não tem tropas suficientes para batalhar!\n");
     }
 }
