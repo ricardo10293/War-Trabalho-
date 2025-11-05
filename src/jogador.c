@@ -1,5 +1,3 @@
-// src/jogador.c
-
 #include "jogador.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,8 +23,11 @@ Jogador* cadastrarJogadores(int numJogadores) {
 
 // Função para liberar a memória dos jogadores
 void liberarJogadores(Jogador* jogadores, int numJogadores) {
+    // Libera os territórios alocados dinamicamente para cada jogador
     for (int i = 0; i < numJogadores; i++) {
-        free(jogadores[i].territorios);  // Libera a memória alocada para territórios, se houver
+        if (jogadores[i].territorios != NULL) {
+            free(jogadores[i].territorios);  // Libera a memória dos territórios
+        }
     }
 
     free(jogadores);  // Libera a memória do array de jogadores
