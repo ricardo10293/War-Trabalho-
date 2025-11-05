@@ -48,3 +48,14 @@ void exibirJogador(Jogador jogador) {
     printf("Tropas: %d\n", jogador.tropas);
     printf("Número de Territórios: %d\n", jogador.numTerritorios);
 }
+#include "jogador.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+// Função para liberar a memória dos jogadores
+void liberarJogadores(Jogador* jogadores, int numJogadores) {
+    for (int i = 0; i < numJogadores; i++) {
+        // Se os jogadores tiverem alocado memória para territórios, libere aqui
+        free(jogadores[i].territorios);
+    }
+}
