@@ -1,29 +1,33 @@
-#include "jogador.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "jogador.h"
+#include "territorio.h"
+#include "batalha.h"
+#include "missao.h"
 
 int main() {
     int numJogadores = 2;
-    Jogador* jogadores = cadastrarJogadores(numJogadores);  // Cadastra os jogadores
-    
-    // Distribuir territórios para os jogadores
-    // (Simulação simples, você pode expandir essa parte)
-    printf("\nDistribuindo territórios...\n");
+
+    // Cadastro de jogadores
+    Jogador* jogadores = malloc(numJogadores * sizeof(Jogador));
+    cadastrarJogadores(jogadores, numJogadores);
+
+    // Exibe as informações dos jogadores
+    printf("\nInformações dos Jogadores:\n");
     for (int i = 0; i < numJogadores; i++) {
-        printf("Jogador %s recebeu %d territórios.\n", jogadores[i].nome, jogadores[i].numTerritorios);
+        exibirJogador(jogadores[i]);
     }
 
-    // Simulando a fase de batalha (a lógica de ataque seria implementada aqui)
-    printf("\nIniciando a batalha...\n");
-    // Aqui você pode colocar a lógica de batalha entre os jogadores, por exemplo:
-    // Jogador1 ataca Jogador2
+    // Distribui territórios para os jogadores
+    distribuirTerritorios(jogadores, numJogadores);
 
-    // Verificar a condição de vitória (você pode expandir essa parte)
-    printf("\nVerificando a condição de vitória...\n");
-    // Simular que um jogador venceu (por exemplo, se tiver mais territórios)
-    printf("Jogador %s venceu o jogo!\n", jogadores[0].nome);  // Exemplo de vitória
+    // Simulação do jogo com batalhas
+    while (!verificarVitoria(jogadores, numJogadores)) {
+        simularBatalha(jogadores, numJogadores);
+    }
 
-    // Liberar memória
+    // Libera memória alocada
     liberarJogadores(jogadores, numJogadores);
 
     return 0;
