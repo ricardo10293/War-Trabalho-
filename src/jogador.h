@@ -1,19 +1,20 @@
 #ifndef JOGADOR_H
 #define JOGADOR_H
 
-#define MAX_COR 20  // Tamanho máximo para a cor
+#define MAX_COR 20
+#define MAX_NOME 50
 
-// Definição da estrutura do Jogador
 typedef struct {
-    char nome[50];
+    char nome[MAX_NOME];
     char cor[MAX_COR];
     int tropas;
-    int numTerritorios;  // Número de territórios que o jogador possui
-    char** territorios;  // Ponteiro para um array de strings (nomes dos territórios)
+    int numTerritorios;
+    char** territorios;
 } Jogador;
 
-// Declaração das funções
-Jogador* cadastrarJogadores(int numJogadores);
+void cadastrarJogadores(Jogador* jogadores, int numJogadores);
+void exibirJogador(Jogador jogador);
 void liberarJogadores(Jogador* jogadores, int numJogadores);
+void escolherCor(Jogador *jogador);
 
-#endif // JOGADOR_H
+#endif
