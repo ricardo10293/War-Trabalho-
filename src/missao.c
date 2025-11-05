@@ -1,8 +1,12 @@
 #include "missao.h"
+#include "jogador.h"
+#include <stdio.h>
 
-int verificarMissao(int numTerritorios, Missao* missao) {
-    if (missao->tipo == 1 && numTerritorios >= missao->objetivo) {
-        return 1; // Missão completada
+int verificarVitoria(Jogador* jogadores, int numJogadores) {
+    for (int i = 0; i < numJogadores; i++) {
+        if (jogadores[i].tropas <= 0) {
+            printf("%s perdeu o jogo!\n", jogadores[i].nome);
+            return 1;  // Fim do jogo, um jogador perdeu
+        }
     }
-    return 0;
-}
+    return
