@@ -1,16 +1,14 @@
+// src/jogador.h
+
 #ifndef JOGADOR_H
 #define JOGADOR_H
 
-#include "territorio.h"
+#define MAX_COR 20  // Definindo a constante MAX_COR com valor 20 (você pode mudar para o tamanho desejado)
 
 typedef struct {
-    char nome[MAX_NOME];
-    char cor[MAX_COR];
-    Territorio* territorios;
-    int numTerritorios;
+    char nome[50];
+    char cor[MAX_COR];  // Usando MAX_COR para definir o tamanho do array
+    int tropas;
 } Jogador;
 
-Jogador* cadastrarJogadores(int n);
-void liberarJogadores(Jogador* jogadores, int n);
-
-#endif
+#endif // JOGADOR_H
