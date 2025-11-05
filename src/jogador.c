@@ -38,3 +38,13 @@ void cadastrarJogadores(Jogador* jogadores, int numJogadores) {
         jogadores[i].territorios = NULL;  // Inicializa o ponteiro para territórios como NULL
     }
 }
+#include "jogador.h"
+#include <stdio.h>
+
+// Função para exibir as informações do jogador
+void exibirJogador(Jogador jogador) {
+    printf("Jogador: %s\n", jogador.nome);
+    printf("Cor: %s\n", jogador.cor);
+    printf("Tropas: %d\n", jogador.tropas);
+    printf("Número de Territórios: %d\n", jogador.numTerritorios);
+}
