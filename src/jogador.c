@@ -1,3 +1,12 @@
+#include "jogador.h"  // Inclusão do cabeçalho onde a estrutura Jogador está definida
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+const char* cores[] = {"Vermelho", "Azul", "Verde", "Amarelo", "Preto", "Branco", "Laranja", "Rosa"};
+#define MAX_CORES 8
+
+// Função para escolher a cor do jogador
 void escolherCor(Jogador *jogador) {
     int escolha;
     printf("Escolha a cor do jogador (1-Vermelho, 2-Azul, 3-Verde, 4-Amarelo, 5-Preto, 6-Branco, 7-Laranja, 8-Rosa): ");
@@ -16,6 +25,7 @@ void escolherCor(Jogador *jogador) {
     }
 }
 
+// Função para cadastrar jogadores
 void cadastrarJogadores(Jogador* jogadores, int numJogadores) {
     for (int i = 0; i < numJogadores; i++) {
         printf("Digite o nome do jogador %d: ", i + 1);
