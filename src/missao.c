@@ -9,4 +9,5 @@ int verificarVitoria(Jogador* jogadores, int numJogadores) {
             return 1;  // Fim do jogo, um jogador perdeu
         }
     }
-    return
+    return 0;  // Jogo continua, ninguém perdeu ainda
+}
